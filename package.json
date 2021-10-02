@@ -1,0 +1,18 @@
+{
+  "name": "portfolio",
+  "version": "0.1.11",
+  "description": "portfolio work",
+  "main": "index.js",
+  "scripts": {
+    "start": "concurrently \"npm run serve --prefix frontend/\" \"npm run dev --prefix backend/\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://gitea.proxmox/garyw/portfolio.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "concurrently": "^5.3.0"
+  }
+}
