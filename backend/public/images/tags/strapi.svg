@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="242.485" height="242.744" viewBox="0 0 242.485 242.744">
+  <g id="Social-Cover" transform="translate(-0.585 -0.76)">
+    <g id="Monogram-Dark-Background" transform="translate(-567 -357)">
+      <g id="Logo" transform="translate(564 357)">
+        <g id="Monogram" transform="translate(0 0.76)">
+          <path id="Combined-Shape-Copy" d="M164.893,165.072V86.344a5.077,5.077,0,0,0-5.077-5.077H81.178V0H240.993a5.077,5.077,0,0,1,5.077,5.077v160Z" fill="#8e75ff" fill-rule="evenodd"/>
+          <path id="Rectangle-Copy-6" d="M81.178,0V81.266H6.124a2.539,2.539,0,0,1-1.8-4.333Z" fill="#8e75ff" fill-rule="evenodd" opacity="0.405"/>
+          <path id="Rectangle-Copy-7" d="M246.071,171.206v75.133H164.893l76.843-76.927a2.539,2.539,0,0,1,4.335,1.794Z" transform="translate(410.963 411.411) rotate(180)" fill="#8e75ff" fill-rule="evenodd" opacity="0.405"/>
+          <path id="Rectangle-Copy-8" d="M81.178,81.266h81.176a2.539,2.539,0,0,1,2.539,2.539v81.267H86.255A5.077,5.077,0,0,1,81.178,160Z" fill="#8e75ff" fill-rule="evenodd" opacity="0.405"/>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

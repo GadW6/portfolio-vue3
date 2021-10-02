@@ -1,0 +1,99 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 col-md-6 col-lg-4 p-3">
+      <a href="/admin/users" class="bg-primary d-block text-light text-center p-3 text-decoration-none">
+        <h5 class="">Users Count:</h5>
+        <h3><%- users.length -%></h3>
+      </a>
+    </div>
+    <div class="col-sm-12 col-md-6 col-lg-4 p-3">
+      <a href="/admin/projects" class="bg-primary d-block text-light text-center p-3 text-decoration-none">
+        <h5 class="">Projects Count:</h5>
+        <h3><%- projects.length -%></h3>
+      </a>
+    </div>
+    <div class="col-sm-12 col-md-6 col-lg-4 p-3">
+      <a href="/admin/tags" class="bg-primary d-block text-light text-center p-3 text-decoration-none">
+        <h5 class="">Tags Count:</h5>
+        <h3><%- tags.length -%></h3>
+      </a>
+    </div>
+  </div>
+  <div id="accordion">
+    <div class="card">
+      <div class="card-header" id="headingOne">
+        <h5 class="mb-0">
+          <button class="btn btn-link text-decoration-none collapsed" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+            Latest Filtered Logs
+          </button>
+        </h5>
+      </div>
+  
+      <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+        <div class="card-body">
+          <table class="table table-success table-striped" id="filteredLogs">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Address</th>
+                <th scope="col">Method</th>
+                <th scope="col">Path</th>
+                <th scope="col">Status</th>
+                <th scope="col">Latency</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% objectLogs.forEach((log, index) => { %>
+              <tr>
+                <th scope="row"><%- index + 1 -%></th>
+                <td><%- log.address -%></td>
+                <td><%- log.method -%></td>
+                <td><%- log.path -%></td>
+                <td><%- log.status -%></td>
+                <td><%- log.latency -%>ms</td>
+              </tr>
+              <% }) %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header" id="headingTwo">
+        <h5 class="mb-0">
+          <button class="btn btn-link text-decoration-none collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+            Latest Unfiltered Logs
+          </button>
+        </h5>
+      </div>
+      <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+        <div class="card-body">
+          <table class="table table-success table-striped" id="unfilteredLogs">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Address</th>
+                <th scope="col">Method</th>
+                <th scope="col">Path</th>
+                <th scope="col">Status</th>
+                <th scope="col">Latency</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% latestLogs.forEach((log, index) => { %>
+              <tr>
+                <th scope="row"><%- index + 1 -%></th>
+                <td><%- log.address -%></td>
+                <td><%- log.method -%></td>
+                <td><%- log.path -%></td>
+                <td><%- log.status -%></td>
+                <td><%- log.latency -%>ms</td>
+              </tr>
+              <% }) %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

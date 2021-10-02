@@ -1,0 +1,19 @@
+<% if(errorMsg){ %>
+  <p class="text-<%- errorMsg.color -%>"><%- errorMsg.msg -%></p>
+<% } %>
+<ul class="row row-cols-5 list-unstyled p-4">
+  <% tags.forEach(tag => { %>
+    <div class="gutter p-4">
+      <li class="col card">
+        <img src="/v1/images/tags/<%- tag.image -%>" width="120" class="card-img-top p-2" style="height: 120px;" alt="">
+        <div class="card-body">
+          <h5 class="card-title text-center my-2"><%- tag.name -%></h5>
+          <div class="btn-group text-center d-block border-top" role="group" aria-label="Basic mixed styles example">
+            <a href="/admin/tags/<%- tag.id -%>/edit" class="btn text-secondary">edit</a>
+            <a href="/admin/tags/<%- tag.id -%>/delete" class="btn text-danger">delete</a>
+          </div>
+        </div>
+      </li>
+    </div>
+  <% }) %>
+</ul>

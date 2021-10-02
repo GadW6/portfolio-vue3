@@ -1,0 +1,67 @@
+<div class="container">
+  <h3 class="text-center py-3">Adding Project</h3>
+  <form action="/admin/projects/add" method="POST" class="bg-light border p-5 rounded-3 needs-validation mb-5" enctype="multipart/form-data" autocomplete="off" novalidate>
+    <div class="row">
+      <div class="mb-3 col">
+        <label for="title" class="form-label">Title<span class="ml-2 text-danger">*</span></label>
+        <input type="text" class="form-control" id="title" name="title" required>
+      </div>
+      <div class="mb-3 col">
+        <label for="description" class="form-label">Short Description<span class="ml-2 text-danger">*</span></label>
+        <input type="text" class="form-control" id="description" name="description" required>
+      </div>
+    </div>
+    <div class="row">
+      <div class="mb-3 col-9">
+        <label class="form-label" for="imageHero">Hero Image</label>
+        <input type="file" class="form-control" id="imageHero" name="image">
+      </div>
+      <div class="mb-3 col-3">
+        <label class="form-label" for="datePicker">Date</label>
+        <input type="text" class="form-control" id="datePicker" name="createdAt" placeholder=". . / . . / . .">
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="fullDescription" class="form-label">Description<span class="ml-2 text-danger">*</span></label>
+      <textarea class="form-control" id="fullDescription" rows="5" name="fullDescription"></textarea>
+    </div>
+    <div class="row">
+      <div class="mb-3 col">
+        <label for="linkSite" class="form-label">Link to Site<span class="ml-2 text-danger">*</span></label>
+        <input type="text" class="form-control" id="linkSite" name="linkSite" value="http://" required>
+      </div>
+      <div class="mb-3 col">
+        <label for="linkGit" class="form-label">Link to Git<span class="ml-2 text-danger">*</span></label>
+        <input type="text" class="form-control" id="linkGit" name="linkGit" value="http://" required>
+      </div>
+    </div>
+    <div class="mb-3">
+      <label class="form-label" for="sliderImages">Slider Images<span class="ml-2 text-danger">*</span></label>
+      <input type="file" class="form-control" id="sliderImages" name="sliderImages" multiple>
+    </div>
+    <div class="mb-3">
+      <label for="techUsedDesc" class="form-label">Technologies Description<span class="ml-2 text-danger">*</span></label>
+      <textarea class="form-control" id="techUsedDesc" rows="5" name="techUsedDesc"></textarea>
+    </div>
+    <div class="tags mb-3">
+      <label class="form-label">Technologies<span class="ml-2 text-danger">*</span></label>
+      <div>
+        <input type="text" style="display: none;" name="tags" required>
+        <% tags.forEach(tag => { %>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="checkbox" id="checkbox-<%- tag.id -%>" value="<%- tag.name -%>" data-path="<%- tag.image -%>" onchange="tagChecking(this)">
+          <label class="form-check-label" for="inlineCheckbox<%- tag.id -%>"><%- tag.name -%></label>
+        </div>
+        <% }) %>
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="conclusion" class="form-label">Conclusion</label>
+      <textarea class="form-control" id="conclusion" rows="5" name="conclusion"></textarea>
+    </div>
+    <div class="text-center mt-4">
+      <button type="submit" class="border border-secondary btn">Add Project</button>
+    </div>
+  </form>
+
+</div>

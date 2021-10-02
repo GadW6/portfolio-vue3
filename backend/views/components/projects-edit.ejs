@@ -1,0 +1,99 @@
+<div class="container">
+  <a href="/admin/projects" class="btn btn-outline-secondary d-inline-block">Back</a>
+  <h3 class="text-center py-3 d-inline-block ml-5">Editing Project: <%- project.title -%></h3>
+  <form action="/admin/projects/<%- project.projectId -%>/edit" method="POST" class="bg-light border p-5 rounded-3 needs-validation mb-5" enctype="multipart/form-data" autocomplete="off" novalidate>
+    <div class="row">
+      <div class="mb-3 col">
+        <label for="title" class="form-label">Title<span class="ml-2 text-danger">*</span></label>
+        <input type="text" class="form-control" id="title" name="title" value="<%- project.title -%>" required>
+      </div>
+      <div class="mb-3 col">
+        <label for="description" class="form-label">Short Description<span class="ml-2 text-danger">*</span></label>
+        <input type="text" class="form-control" id="description" name="description" value="<%- project.description -%>" required>
+      </div>
+    </div>
+    <div class="row">
+      <div class="mb-3 col-9">
+        <label class="form-label" for="imageHero">Hero Image</label>
+        <input type="file" class="form-control" id="imageHero" name="image">
+      </div>
+      <div class="mb-3 col-3">
+        <label class="form-label" for="datePicker">Date</label>
+        <input type="text" class="form-control" id="datePicker" name="createdAt" placeholder=". . / . . / . .">
+      </div>
+    </div>
+    <ul class="list-group mb-3">
+      <li class="form-check form-switch py-2 d-flex align-items-center">
+        <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked-<%- project.id -%>" checked disabled>
+        <img class="img-thumbnail mx-3" width="200px" src="/v1/images/projects/<%- project.image -%>" alt="">
+        <label class="form-check-label" for="flexSwitchCheckChecked-<%- project.id -%>">
+          <strong>Title:</strong>
+          <%- project.image.split('*_*')[1] -%>
+        </label>
+      </li>
+    </ul>
+    <div class="mb-3">
+      <label for="fullDescription" class="form-label">Description<span class="ml-2 text-danger">*</span></label>
+      <textarea class="form-control" id="fullDescription" rows="5" name="fullDescription"><%- project.fullDescription -%></textarea>
+    </div>
+    <div class="row">
+      <div class="mb-3 col">
+        <label for="linkSite" class="form-label">Link to Site<span class="ml-2 text-danger">*</span></label>
+        <input type="text" class="form-control" id="linkSite" name="linkSite" value="<%- project.linkSite -%>" required>
+      </div>
+      <div class="mb-3 col">
+        <label for="linkGit" class="form-label">Link to Git<span class="ml-2 text-danger">*</span></label>
+        <input type="text" class="form-control" id="linkGit" name="linkGit" value="<%- project.linkGit -%>" required>
+      </div>
+    </div>
+    <div class="mb-3">
+      <label class="form-label" for="sliderImages">Slider Images<span class="ml-2 text-danger">*</span></label>
+      <input type="file" class="form-control" id="sliderImages" name="sliderImages" multiple>
+    </div>
+    <ul class="list-group mb-3" id="sliderImagesToFlatten">
+      <input type="text" style="display: none;" name="sliderImagesToFlatten" required>
+      <% project.sliderImages.forEach(slider => { %>
+        <li class="form-check form-switch py-2 d-flex align-items-center">
+          <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked-<%- slider.id -%>" value="<%- slider.image -%>" onchange="imgChecking(this)" checked>
+          <img class="img-thumbnail mx-3" width="200px" src="/v1/images/sliders/<%- slider.image -%>" alt="">
+          <label class="form-check-label" for="flexSwitchCheckChecked-<%- slider.id -%>">
+            <strong>Title:</strong>
+            <%- slider.image.split('*_*')[1] -%>
+          </label>
+        </li>
+      <% }) %>
+    </ul>
+    <div class="mb-3">
+      <label for="techUsedDesc" class="form-label">Technologies Description<span class="ml-2 text-danger">*</span></label>
+      <textarea class="form-control" id="techUsedDesc" rows="5" name="techUsedDesc"><%- project.techUsedDesc -%></textarea>
+    </div>
+    <div class="tags mb-3" id="technologies">
+      <label class="form-label">Technologies<span class="ml-2 text-danger">*</span></label>
+      <div>
+        <input type="text" style="display: none;" name="tags" required>
+        <% tags.forEach(tag => { %>
+        <div class="form-check form-check-inline">
+          <% if(project.tags.find(el => el.id === tag.id)) { %>
+            <input class="form-check-input" type="checkbox" id="checkbox-<%- tag.id -%>" value="<%- tag.name -%>" data-path="<%- tag.image -%>" data-id="<%- tag.id -%>" onchange="tagChecking(this)" checked>
+          <% } else { %>
+            <input class="form-check-input" type="checkbox" id="checkbox-<%- tag.id -%>" value="<%- tag.name -%>" data-path="<%- tag.image -%>" data-id="<%- tag.id -%>" onchange="tagChecking(this)">
+          <% } %>
+          <label class="form-check-label" for="inlineCheckbox<%- tag.id -%>"><%- tag.name -%></label>
+        </div>
+        <% }) %>
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="conclusion" class="form-label">Conclusion</label>
+      <textarea class="form-control" id="conclusion" rows="5" name="conclusion"><%- project.conclusion -%></textarea>
+    </div>
+    <div class="text-center mt-4">
+      <button type="submit" class="border border-secondary btn">Edit Project</button>
+    </div>
+  </form>
+
+</div>
+
+<script>
+  const d = new Date('<%- project.createdAt -%>')
+</script>

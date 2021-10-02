@@ -1,0 +1,33 @@
+<% if(errorMsg){ %>
+  <p class="text-<%- errorMsg.color -%>"><%- errorMsg.msg -%></p>
+<% } %>
+<div class="p-4">
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Title</th>
+        <th scope="col">URI</th>
+        <th scope="col">Created</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% projects.forEach((project, index) => { %>
+        <% const d = new Date(project.createdAt) %>
+
+        <tr>
+          <th><%- index + 1 -%></th>
+          <td><%- project.title -%></td>
+          <td><a href="<%- frontURL -%>portfolio/<%- project.slug -%>"><%- project.slug -%></a></td>
+          <td><%- `${d.getDate()}/${d.getMonth()+1}/${d.getFullYear()}` -%></td>
+          <td>
+            <a href="/admin/projects/<%- project.id -%>/edit" class="btn text-secondary py-0">edit</a>
+            <a href="/admin/projects/<%- project.id -%>/delete" class="btn text-danger py-0">delete</a>
+          </td>
+        </tr>
+      
+      <% }) %>
+      </tbody>
+  </table>
+</div>
